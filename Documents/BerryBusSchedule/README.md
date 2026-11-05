@@ -34,16 +34,16 @@ The form checks that the ID is digits only, that both stops are chosen, and that
 
 **Logo:** save the official logo as `images/berry-logo.png` (the white version, since the header is navy). It appears automatically; until then the header shows "Berry College" as text.
 
-**Photos:** the pictures are drawn placeholders. Put your photos in `images/` and change the matching `src` in `index.html` (and update the `alt` text to describe your photo):
+**Photos:** to swap a photo, replace the file in `images/` (keep the name) or change the matching `src` in `index.html`, and update the `alt` text to describe the new picture:
 
-| Where on the page | Placeholder file |
+| Where on the page | File |
 | --- | --- |
-| Big banner at the top | `images/campus.svg` |
-| Large photo | `images/bus-side.svg` |
-| Small photo, top | `images/bus-stop.svg` |
-| Small photo, bottom | `images/campus-walk.svg` |
+| Big banner at the top | `images/campus.jpg` |
+| Large photo | `images/bus-side.jpg` |
+| Small photo, top | `images/bus-stop.jpg` |
+| Small photo, bottom | `images/campus-walk.jpg` |
 
-Photos of Berry's actual buses and campus will make a much stronger impression on the administration than drawings.
+The banner is stretched across the full width of the screen, so the bigger the photo you use there, the sharper it looks (1600 px wide or more is ideal).
 
 ## What's in the folder
 
@@ -56,7 +56,7 @@ berry-bus-schedule/
 ├── js/schedule.js     the calendar, touch-and-drag painting, saving, next-bus sign
 ├── js/ride.js         the request-a-ride form, its stop list and the popup
 ├── js/login.js        the login form
-├── images/            placeholder pictures (add berry-logo.png here)
+├── images/            the photos (add berry-logo.png here)
 └── .vscode/           tells VS Code to recommend Live Server
 ```
 

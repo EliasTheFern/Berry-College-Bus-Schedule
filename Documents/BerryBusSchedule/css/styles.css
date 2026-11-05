@@ -1116,6 +1116,26 @@ img {
 
 /* .login-error is styled with .form-error in the "Request a ride" section */
 
+/* The demo username and password shown under the button */
+.login-demo {
+  margin: 18px 0 0;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: #F0F6FB;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.login-demo code {
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: #fff;
+  color: var(--berry-blue);
+  font-family: Consolas, "Courier New", monospace;
+  font-weight: 700;
+}
+
 .primary-btn {
   width: 100%;
   margin-top: 22px;
