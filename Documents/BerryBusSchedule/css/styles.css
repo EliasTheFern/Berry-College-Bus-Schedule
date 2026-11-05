@@ -828,6 +828,178 @@ img {
 
 
 /* =========================================================
+   Request a ride
+   ========================================================= */
+.ride-section {
+  max-width: 1040px;
+  margin: 0 auto 80px;
+  padding: 0 16px;
+}
+
+.ride-card {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  overflow: hidden;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow:
+    0 28px 56px -28px rgba(0, 32, 91, 0.5),
+    0 2px 6px rgba(0, 32, 91, 0.08);
+}
+
+/* Navy panel on the left, styled like the sign in the hero */
+.ride-intro {
+  padding: 36px 32px;
+  background: var(--berry-blue);
+  color: #fff;
+}
+
+.ride-icon {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  margin-bottom: 18px;
+  border-radius: 10px;
+  background: #fff;
+  color: var(--berry-blue);
+}
+
+.ride-icon svg {
+  width: 38px;
+  height: 38px;
+}
+
+.ride-intro h2 {
+  margin: 0 0 10px;
+  font-family: var(--font-serif);
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.ride-intro p {
+  margin: 0 0 12px;
+  color: #D9E4F1;
+  font-size: 1.05rem;
+}
+
+/* Two classes in the selector so this wins over ".ride-intro p" above */
+.ride-intro .ride-fineprint {
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--berry-silver);
+  font-size: 0.9rem;
+}
+
+.ride-form {
+  padding: 30px 32px 32px;
+}
+
+.ride-form label {
+  display: block;
+  margin: 0 0 6px;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.ride-form label + * + label {
+  margin-top: 16px; /* space between one field and the next label */
+}
+
+.ride-form input,
+.ride-form select {
+  width: 100%;
+  padding: 11px 12px;
+  border: 1.5px solid var(--line-strong);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--ink);
+  font: inherit;
+}
+
+.ride-form select {
+  cursor: pointer;
+}
+
+.ride-form input:focus,
+.ride-form select:focus {
+  border-color: var(--berry-bright-blue);
+  outline: 3px solid rgba(0, 133, 202, 0.25);
+  outline-offset: 0;
+}
+
+.ride-form .primary-btn {
+  margin-top: 22px;
+}
+
+/* Shared by the login and ride forms */
+.form-error,
+.login-error {
+  margin: 16px 0 0;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: #FCECEB;
+  color: #8E1F18;
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+/* ---------- The popup ----------
+   <dialog> is the browser's built-in popup. showModal() in ride.js opens it
+   centered and dims everything behind it (the ::backdrop). */
+.ride-dialog {
+  width: min(92vw, 420px);
+  padding: 32px 30px 28px;
+  border: 0;
+  border-top: 6px solid var(--berry-bright-blue);
+  border-radius: 14px;
+  box-shadow: 0 30px 60px -20px rgba(0, 22, 63, 0.6);
+  color: var(--ink);
+  text-align: center;
+}
+
+.ride-dialog::backdrop {
+  background: rgba(0, 22, 63, 0.55);
+}
+
+.ride-dialog-icon {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 16px;
+  border-radius: 12px;
+  background: var(--berry-blue);
+  color: #fff;
+}
+
+.ride-dialog-icon svg {
+  width: 42px;
+  height: 42px;
+}
+
+.ride-dialog h2 {
+  margin: 0 0 8px;
+  color: var(--berry-blue);
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.ride-dialog p {
+  min-height: 1.5em;
+  margin: 0;
+  color: var(--ink-soft);
+}
+
+.ride-dialog .primary-btn {
+  margin-top: 22px;
+}
+
+
+/* =========================================================
    Footer
    ========================================================= */
 .site-footer {
@@ -942,15 +1114,7 @@ img {
   outline-offset: 0;
 }
 
-.login-error {
-  margin: 16px 0 0;
-  padding: 10px 12px;
-  border-radius: 8px;
-  background: #FCECEB;
-  color: #8E1F18;
-  font-size: 0.92rem;
-  font-weight: 600;
-}
+/* .login-error is styled with .form-error in the "Request a ride" section */
 
 .primary-btn {
   width: 100%;
@@ -1113,6 +1277,26 @@ img {
 
   .photo-large {
     grid-row: auto;
+  }
+
+  .ride-section {
+    margin-bottom: 56px;
+  }
+
+  .ride-card {
+    grid-template-columns: 1fr; /* intro on top, form underneath */
+  }
+
+  .ride-intro {
+    padding: 26px 20px;
+  }
+
+  .ride-form {
+    padding: 22px 20px 24px;
+  }
+
+  .ride-dialog {
+    padding: 26px 20px 22px;
   }
 }
 

@@ -24,6 +24,12 @@ Double-clicking `index.html` also works in Chrome and Edge. Live Server is the s
 - The arrows switch weeks, and every week is saved separately. **Copy previous week** fills the week on screen with last week's times; **Clear week** empties it.
 - Changes save the moment you let go. Click **Log out** to see exactly what students see.
 
+## Requesting a ride
+
+At the bottom of the page, a student enters their ID number and picks a pickup and drop-off stop. The stops are Berry's real shuttle stops, taken from the college's published campus bus schedule: the 14 Main Campus loop stops in route order, plus Mountain Campus and Oak Hill, which Berry serves by request. After the form is sent, a popup says the bus will arrive shortly.
+
+The form checks that the ID is digits only, that both stops are chosen, and that they're different. To add, remove or rename a stop, edit the `STOP_GROUPS` list at the top of `js/ride.js`; both dropdowns update from it.
+
 ## Adding the logo and real photos
 
 **Logo:** save the official logo as `images/berry-logo.png` (the white version, since the header is navy). It appears automatically; until then the header shows "Berry College" as text.
@@ -48,6 +54,7 @@ berry-bus-schedule/
 ├── css/styles.css     all the styling; Berry's colors are at the top
 ├── js/site.js         shared: remembers the login, top-right link, logo
 ├── js/schedule.js     the calendar, touch-and-drag painting, saving, next-bus sign
+├── js/ride.js         the request-a-ride form, its stop list and the popup
 ├── js/login.js        the login form
 ├── images/            placeholder pictures (add berry-logo.png here)
 └── .vscode/           tells VS Code to recommend Live Server
@@ -86,6 +93,10 @@ Every blue half hour becomes a short text key like `"0-450"` (day 0 = Monday, mi
 
 `renderSign()` checks today and the next 7 days, finds the first blue block that hasn't finished, and shows "Running now" or "Next bus". It refreshes every minute, as does the gold line marking the current time.
 
+### 6. The ride-request popup
+
+The popup is a `<dialog>` element, which browsers now support natively. `rideDialog.showModal()` opens it centered, dims the rest of the page (styled with the `::backdrop` selector), and traps keyboard focus inside it until it closes. Escape closes it for free; `ride.js` adds an OK button and closes it when the dimmed area is clicked. The `<optgroup>` headings inside the dropdowns ("Main Campus shuttle stops", "By request") are also built in, with no extra code.
+
 ## Settings you can change
 
 At the top of `js/schedule.js`:
@@ -102,10 +113,12 @@ Two shortcuts are fine for a demo but not for real students:
 
 1. **Saving is per browser.** `localStorage` lives inside one browser on one device, so times painted on your laptop won't show up on a student's phone. A real version saves to a shared database (Firebase or Supabase are common free starting points), and every visitor reads from it. For the demo, paint the schedule on the same computer and browser you present from.
 2. **The login isn't secure.** The username and password sit in `js/site.js`, where anyone can read them with View Source, and the "logged in" flag can be set by hand in DevTools. A real version checks the password on a server, ideally through the college's own sign-in system.
+3. **Ride requests go nowhere yet.** The form shows the popup but doesn't send the request anywhere. A real version would deliver it to whoever dispatches the shuttle (Berry's Office of Student Involvement handles ride requests today) by email, text message or a dispatcher screen, and would check the student ID against the college's records.
 
 ## Ideas to try next
 
 - An **Undo** button: save a copy of `weekSlots` before each drag.
+- A **dispatcher view** for the admin that lists incoming ride requests.
 - A second route in another color, such as a weekend shopping run.
 - Keyboard painting with the arrow keys and Space, so the editor works without a mouse.
 - Connect a free Firebase project so the schedule saves for everyone.

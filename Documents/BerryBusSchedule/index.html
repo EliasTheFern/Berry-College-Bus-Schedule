@@ -43,6 +43,7 @@
       <nav class="site-nav" aria-label="Main">
         <a href="#schedule">Schedule</a>
         <a href="#photos">Photos</a>
+        <a href="#ride">Request a ride</a>
       </nav>
     </div>
   </header>
@@ -134,7 +135,52 @@
         </figure>
       </div>
     </section>
+
+    <!-- ============ REQUEST A RIDE ============ -->
+    <section class="ride-section" id="ride" aria-labelledby="rideTitle">
+      <div class="ride-card">
+        <div class="ride-intro">
+          <span class="ride-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M7 2.5h10a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3v-10a3 3 0 0 1 3-3zM6.5 6.5v5h11v-5zM9 3.9v1h6v-1zM8.75 15a1.25 1.25 0 1 0-2.5 0 1.25 1.25 0 0 0 2.5 0zm9 0a1.25 1.25 0 1 0-2.5 0 1.25 1.25 0 0 0 2.5 0zM6 18.5h3V21a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1zm9 0h3V21a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1z"/></svg>
+          </span>
+          <h2 id="rideTitle">Request a ride</h2>
+          <p>Tell us where you are and where you're headed, and the shuttle will come to you.</p>
+          <p class="ride-fineprint">Mountain Campus and Oak Hill pickups are by request, so they may take a little longer.</p>
+        </div>
+
+        <!-- novalidate: we show our own error messages instead of the browser's pop-ups -->
+        <form class="ride-form" id="rideForm" novalidate>
+          <label for="studentId">Student ID number</label>
+          <input type="text" id="studentId" name="studentId" inputmode="numeric" autocomplete="off" placeholder="Digits only" required>
+
+          <label for="pickup">Pickup location</label>
+          <!-- ride.js fills both dropdowns from one list of stops -->
+          <select id="pickup" name="pickup" required>
+            <option value="">Choose a stop</option>
+          </select>
+
+          <label for="dropoff">Drop-off location</label>
+          <select id="dropoff" name="dropoff" required>
+            <option value="">Choose a stop</option>
+          </select>
+
+          <p class="form-error" id="rideError" role="alert" hidden></p>
+
+          <button type="submit" class="primary-btn">Request pickup</button>
+        </form>
+      </div>
+    </section>
   </main>
+
+  <!-- ============ POPUP shown after a ride request ============ -->
+  <dialog class="ride-dialog" id="rideDialog" aria-labelledby="rideDialogTitle">
+    <span class="ride-dialog-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M7 2.5h10a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3v-10a3 3 0 0 1 3-3zM6.5 6.5v5h11v-5zM9 3.9v1h6v-1zM8.75 15a1.25 1.25 0 1 0-2.5 0 1.25 1.25 0 0 0 2.5 0zm9 0a1.25 1.25 0 1 0-2.5 0 1.25 1.25 0 0 0 2.5 0zM6 18.5h3V21a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1zm9 0h3V21a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1z"/></svg>
+    </span>
+    <h2 id="rideDialogTitle">Your bus will arrive shortly</h2>
+    <p id="rideDialogDetail"></p>
+    <button type="button" class="primary-btn" id="rideDialogClose">OK</button>
+  </dialog>
 
   <!-- ============ FOOTER ============ -->
   <footer class="site-footer">
@@ -146,6 +192,7 @@
       <nav class="footer-links" aria-label="Footer">
         <a href="#schedule">Bus schedule</a>
         <a href="#photos">Photos</a>
+        <a href="#ride">Request a ride</a>
       </nav>
     </div>
     <p class="footer-note">Campus bus schedule prototype</p>
@@ -154,5 +201,6 @@
   <!-- site.js first (login helpers), then the schedule code that uses them -->
   <script src="js/site.js"></script>
   <script src="js/schedule.js"></script>
+  <script src="js/ride.js"></script>
 </body>
 </html>
