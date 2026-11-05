@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin login | Berry College Bus Schedule</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Libre+Caslon+Text:wght@400;700&family=Overpass:wght@400;600;700;800&display=swap">
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="login-body">
+
+  <div class="utility-bar">
+    <div class="utility-inner">
+      <span class="utility-note">Campus transportation</span>
+      <a class="admin-link" href="index.html">Back to the schedule</a>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html">
+        <img class="brand-logo" src="images/berry-logo.png" alt="Berry College">
+        <span class="brand-name">Berry College</span>
+      </a>
+      <span class="brand-divider" aria-hidden="true"></span>
+      <span class="brand-sub">Campus Bus Schedule</span>
+    </div>
+  </header>
+
+  <main class="login-main">
+    <!-- novalidate: we show our own error messages instead of the browser's pop-ups -->
+    <form class="login-card" id="loginForm" novalidate>
+      <h1>Admin login</h1>
+      <p class="login-lede">Log in to edit the bus schedule.</p>
+
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" autocomplete="username" autocapitalize="none" spellcheck="false" required>
+
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" autocomplete="current-password" required>
+
+      <p class="login-error" id="loginError" role="alert" hidden></p>
+
+      <button type="submit" class="primary-btn">Log in</button>
+    </form>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <p class="footer-name">Berry College</p>
+        <p>2277 Martha Berry Hwy NW<br>Mount Berry, GA 30149</p>
+      </div>
+    </div>
+    <p class="footer-note">Campus bus schedule prototype</p>
+  </footer>
+
+  <script src="js/site.js"></script>
+  <script src="js/login.js"></script>
+</body>
+</html>
